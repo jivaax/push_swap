@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
+/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 00:07:50 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/02 12:32:58 by juliannawir      ###   ########.fr       */
+/*   Updated: 2026/07/13 16:52:40 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 void	add_nodes(t_node **stack, int value)
 {
-		t_node	*new_node;
+	t_node	*new_node;
 
-		new_node = malloc(sizeof(t_node));
-		new_node->value = value;
-		new_node->next = *stack;
-		*stack = new_node;
+	new_node = malloc(sizeof(t_node));
+	new_node->value = value;
+	new_node->next = *stack;
+	*stack = new_node;
 }
 
 void	print_stack(t_node *stack)
@@ -46,10 +46,10 @@ void	free_stack(t_node *stack)
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	t_node *stack_a;
-	t_node *stack_b;
-	
+	int		i;
+	t_node	*stack_a;
+	t_node	*stack_b;
+
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1)

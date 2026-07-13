@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rot.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
+/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 23:52:59 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/13 13:37:51 by juliannawir      ###   ########.fr       */
+/*   Updated: 2026/07/13 17:49:16 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,21 @@
 void	rev_rotate(t_node **stack)
 {
 	t_node	*first;
+	t_node	*prev;
 	t_node	*last;
+
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	first = *stack;
-	last = *stack;
-	while (last->next != NULL)
-		last = last->next;
-	last->next = NULL;
-	last = *stack;
-	last->next = first->next;
+	while (first->next != NULL)
+	{
+		prev = first;
+		first = first->next;
+	}
+	last = first;
+	prev->next = NULL;
+	last->next = *stack;
+	*stack = last;
 }
 
 void	rra(t_node **stack_a)

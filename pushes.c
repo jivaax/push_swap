@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pushes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
+/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:57:53 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/13 13:22:26 by juliannawir      ###   ########.fr       */
+/*   Updated: 2026/07/13 16:48:26 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void pa(t_node **stack_a, t_node **stack_b)
+void	pa(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*temp;
-	
+
 	if (!stack_b || !*stack_b)
 		return ;
 	temp = *stack_b;
@@ -25,10 +25,10 @@ void pa(t_node **stack_a, t_node **stack_b)
 	write(1, "pa\n", 3);
 }
 
-void pb(t_node **stack_a, t_node **stack_b)
+void	pb(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*temp;
-	
+
 	if (!stack_a || !*stack_a)
 		return ;
 	temp = *stack_a;

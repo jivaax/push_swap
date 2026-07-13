@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
+/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:15:07 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/01 23:29:14 by juliannawir      ###   ########.fr       */
+/*   Updated: 2026/07/13 16:54:04 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ long	ft_atol(const char *nptr)
 	return (c * s);
 }
 
-void error_exit(t_node *stack_a)
+void	error_exit(t_node *stack_a)
 {
 	free_stack(stack_a);
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
+
 int	valid_nbr_check(char *str)
 {
 	if (!str || *str == '\0')
@@ -61,7 +62,7 @@ int	valid_nbr_check(char *str)
 
 int	int_range_check(char *str)
 {
-	long num;
+	long	num;
 
 	num = ft_atol(str);
 	if (num > INT_MAX || num < INT_MIN)
@@ -71,8 +72,8 @@ int	int_range_check(char *str)
 
 int	duplicate_check(t_node *stack)
 {
-	t_node *current;
-	
+	t_node	*current;
+
 	if (!stack)
 		return (0);
 	while (stack)
@@ -87,4 +88,4 @@ int	duplicate_check(t_node *stack)
 		stack = stack->next;
 	}
 	return (0);
-} 
+}
