@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rot.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/01 23:52:59 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/13 17:49:16 by jwira            ###   ########.fr       */
+/*   Updated: 2026/07/14 17:06:58 by juliannawir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rev_rotate(t_node **stack)
+static void	rev_rotate(t_node **stack)
 {
 	t_node	*first;
 	t_node	*prev;

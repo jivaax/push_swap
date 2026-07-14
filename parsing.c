@@ -3,89 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/29 16:15:07 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/14 13:33:10 by jwira            ###   ########.fr       */
+/*   Created: 2026/07/14 13:26:05 by jwira             #+#    #+#             */
+/*   Updated: 2026/07/14 17:38:22 by juliannawir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *nptr)
+void	free_split(char **numbers)
 {
-	long	c;
-	int		s;
+	int	i;
 
-	c = 0;
-	s = 1;
-	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
-		nptr++;
-	if (*nptr == '-')
+	if (!numbers)
+		return ;
+	i = 0;
+	while (numbers[i])
 	{
-		s = -1;
-		nptr++;
+		free(numbers[i]);
+		i++;
 	}
-	else if (*nptr == '+')
-		nptr++;
-	while (*nptr != '\0' && ft_isdigit(*nptr))
+	free(numbers);
+}
+
+void	parse_argument(char *arg, t_node **stack_a)
+{
+	char	**numbers;
+	int		i;
+
+	numbers = ft_split(arg, ' ');
+	if (!numbers)
+		error_exit(*stack_a);
+	if (!numbers[0])
 	{
-		c = (c * 10) + (*nptr - '0');
-		nptr++;
+		free_split(numbers);
+		error_exit(*stack_a);
 	}
-	return (c * s);
-}
-
-void	error_exit(t_node *stack)
-{
-	free_stack(stack);
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
-
-int	valid_nbr_check(char *str)
-{
-	if (!str || *str == '\0')
-		return (0);
-	if (*str == '-' || *str == '+')
-		str++;
-	if (*str == '\0')
-		return (0);
-	while (*str)
+	i = 0;
+	while (numbers[i])
+		i++;
+	while (i > 0)
 	{
-		if (!ft_isdigit(*str))
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-int	int_range_check(char *str)
-{
-	long	num;
-
-	num = ft_atol(str);
-	if (num > INT_MAX || num < INT_MIN)
-		return (0);
-	return (1);
-}
-
-int	duplicate_check(t_node *stack)
-{
-	t_node	*current;
-
-	if (!stack)
-		return (0);
-	while (stack)
-	{
-		current = stack->next;
-		while (current)
+		i--;
+		if (!valid_nbr_check(numbers[i]) || !int_range_check(numbers[i]))
 		{
-			if (stack->value == current->value)
-				return (1);
-			current = current->next;
+			free_split(numbers);
+			error_exit(*stack_a);
 		}
-		stack = stack->next;
+		add_nodes(stack_a, ft_atoi(numbers[i]));
 	}
-	return (0);
+	free_split(numbers);
+}
+
+void	parse_input(int argc, char **argv, t_node **stack_a)
+{
+	int	i;
+
+	i = argc - 1;
+	while (i > 0)
+	{
+		parse_argument(argv[i], stack_a);
+		i--;
+	}
+	if (duplicate_check(*stack_a))
+		error_exit(*stack_a);
 }

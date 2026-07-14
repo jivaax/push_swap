@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 00:07:50 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/14 13:35:47 by jwira            ###   ########.fr       */
+/*   Updated: 2026/07/14 19:15:09 by juliannawir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
 void	add_nodes(t_node **stack, int value)
 {
@@ -50,12 +49,22 @@ int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
+	int		size;
 
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1)
 		return (0);
 	parse_input(argc, argv, &stack_a);
+	size = stack_size(stack_a);
+	if (is_sorted(stack_a))
+		;
+	else if (size == 2)
+		sort_two(&stack_a);
+	else if (size == 3)
+		sort_three(&stack_a);
+	//else if (size <= 5)
+	//	sort_five(&stack_a, &stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotations.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:09:52 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/13 16:54:19 by jwira            ###   ########.fr       */
+/*   Updated: 2026/07/14 17:07:15 by juliannawir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_node **stack)
+static void	rotate(t_node **stack)
 {
 	t_node	*first;
 	t_node	*last;
