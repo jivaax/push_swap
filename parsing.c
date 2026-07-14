@@ -6,7 +6,7 @@
 /*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:15:07 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/13 16:54:04 by jwira            ###   ########.fr       */
+/*   Updated: 2026/07/14 13:33:10 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ long	ft_atol(const char *nptr)
 	return (c * s);
 }
 
-void	error_exit(t_node *stack_a)
+void	error_exit(t_node *stack)
 {
-	free_stack(stack_a);
+	free_stack(stack);
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
