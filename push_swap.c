@@ -6,7 +6,7 @@
 /*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 00:07:50 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/14 19:15:09 by juliannawir      ###   ########.fr       */
+/*   Updated: 2026/07/15 22:18:12 by juliannawir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,6 @@ void	add_nodes(t_node **stack, int value)
 	new_node->value = value;
 	new_node->next = *stack;
 	*stack = new_node;
-}
-
-void	print_stack(t_node *stack)
-{
-	while (stack != NULL)
-	{
-		ft_printf("%d\n", stack->value);
-		stack = stack->next;
-	}
 }
 
 void	free_stack(t_node *stack)
@@ -58,13 +49,15 @@ int	main(int argc, char **argv)
 	parse_input(argc, argv, &stack_a);
 	size = stack_size(stack_a);
 	if (is_sorted(stack_a))
-		;
+		return ;
 	else if (size == 2)
 		sort_two(&stack_a);
 	else if (size == 3)
 		sort_three(&stack_a);
-	//else if (size <= 5)
-	//	sort_five(&stack_a, &stack_b);
+	else if (size == 4)
+		sort_four(&stack_a, &stack_b);
+	else if (size <= 5)
+		sort_five(&stack_a, &stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
