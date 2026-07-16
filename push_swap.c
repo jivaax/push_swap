@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
+/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 00:07:50 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/15 22:18:12 by juliannawir      ###   ########.fr       */
+/*   Updated: 2026/07/16 15:30:58 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,22 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc == 1)
-		return (0);
-	parse_input(argc, argv, &stack_a);
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	else if (argc == 2)
+		parse_input(argc, argv, &stack_a);
 	size = stack_size(stack_a);
-	if (is_sorted(stack_a))
-		return ;
-	else if (size == 2)
-		sort_two(&stack_a);
-	else if (size == 3)
-		sort_three(&stack_a);
-	else if (size == 4)
-		sort_four(&stack_a, &stack_b);
-	else if (size <= 5)
-		sort_five(&stack_a, &stack_b);
+	if (!is_sorted(stack_a))
+	{
+		if (size == 2)
+			sort_two(&stack_a);
+		else if (size == 3)
+			sort_three(&stack_a);
+		else if (size == 4)
+			sort_four(&stack_a, &stack_b);
+		else if (size <= 5)
+			sort_five(&stack_a, &stack_b);
+	}
 	free_stack(stack_a);
-	free_stack(stack_b);
 	return (0);
 }

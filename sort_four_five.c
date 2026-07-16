@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_four_five.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
+/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 19:33:54 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/15 21:29:12 by juliannawir      ###   ########.fr       */
+/*   Updated: 2026/07/16 14:51:16 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static int	find_min(t_node *stack)
 	return (min);
 }
 
-void sort_four(t_node **stack_a, t_node **stack_b)
+void	sort_four(t_node **stack_a, t_node **stack_b)
 {
 	int	min;
-	
+
 	if (stack_size(*stack_a) != 4)
 		return ;
 	min = find_min(*stack_a);
@@ -75,10 +75,10 @@ void sort_four(t_node **stack_a, t_node **stack_b)
 	pa(stack_a, stack_b);
 }
 
-void sort_five(t_node **stack_a, t_node **stack_b)
+void	sort_five(t_node **stack_a, t_node **stack_b)
 {
 	int	min;
-	
+
 	if (stack_size(*stack_a) != 5)
 		return ;
 	min = find_min(*stack_a);

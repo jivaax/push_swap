@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
+/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 16:15:07 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/14 17:32:02 by juliannawir      ###   ########.fr       */
+/*   Updated: 2026/07/16 15:36:07 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 long	ft_atol(const char *nptr)
 {
-	long	c;
-	int		s;
+	long	result;
+	int		sign;
 
-	c = 0;
-	s = 1;
+	result = 0;
+	sign = 1;
 	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
 		nptr++;
 	if (*nptr == '-')
 	{
-		s = -1;
+		sign = -1;
 		nptr++;
 	}
 	else if (*nptr == '+')
 		nptr++;
 	while (*nptr != '\0' && ft_isdigit(*nptr))
 	{
-		c = (c * 10) + (*nptr - '0');
+		result = (result * 10) + (*nptr - '0');
 		nptr++;
 	}
-	return (c * s);
+	return (result * sign);
 }
 
 void	error_exit(t_node *stack)

@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   sort_algorithm.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/14 17:09:32 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/16 14:46:49 by jwira            ###   ########.fr       */
+/*   Created: 2026/07/16 14:46:34 by jwira             #+#    #+#             */
+/*   Updated: 2026/07/16 15:38:06 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+//#include "push_swap.h"
 
-int	stack_size(t_node *stack)
-{
-	int	size;
+//void	sort_turk(t_node **stack_a, t_node **stack_b)
+//{
+//	while (stack_size(*stack_a) > 3)
+//	{
 
-	size = 0;
-	while (stack != NULL)
-	{
-		size++;
-		stack = stack->next;
-	}
-	return (size);
-}
+//	}
+//}
 
-int	is_sorted(t_node *stack)
-{
-	while (stack != NULL && stack->next != NULL)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
