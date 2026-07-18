@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 18:06:55 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/16 14:46:44 by jwira            ###   ########.fr       */
+/*   Updated: 2026/07/18 09:09:53 by juliannawir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_four_five(t_node **stack_a, t_node **stack_b)
+{
+	int	min;
+
+	if (!stack_a || !*stack_a || !stack_b)
+		return ;
+	while (stack_size(*stack_a) > 3)
+	{
+		min = find_min(*stack_a);
+		rotate_to_top(stack_a, min);
+		pb(stack_a, stack_b);
+	}
+	sort_three(stack_a);
+	while (*stack_b)
+		pa(stack_a, stack_b);
+}
 
 static void	sort_three_values(t_node **stack, int first, int second, int third)
 {

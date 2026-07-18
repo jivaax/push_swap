@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 16:51:42 by jwira             #+#    #+#             */
-/*   Updated: 2026/07/16 15:31:42 by jwira            ###   ########.fr       */
+/*   Updated: 2026/07/18 10:26:49 by juliannawir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next;
 }	t_node;
 
@@ -34,6 +35,8 @@ void	add_nodes(t_node **stack, int value);
 long	ft_atol(const char *nptr);
 void	free_split(char **numbers);
 void	free_stack(t_node *stack);
+char	**ps_split(char const *s, char c);
+
 void	sa(t_node **stack_a);
 void	sb(t_node **stack_b);
 void	ss(t_node **stack_a, t_node **stack_b);
@@ -45,11 +48,20 @@ void	rr(t_node **stack_a, t_node **stack_b);
 void	rra(t_node **stack_a);
 void	rrb(t_node **stack_b);
 void	rrr(t_node **stack_a, t_node **stack_b);
-int		stack_size(t_node *stack);
-int		is_sorted(t_node *stack);
+
 void	sort_two(t_node **stack_a);
 void	sort_three(t_node **stack_a);
-void	sort_four(t_node **stack_a, t_node **stack_b);
-void	sort_five(t_node **stack_a, t_node **stack_b);
+void	sort_four_five(t_node **stack_a, t_node **stack_b);
+void	sort_chunks(t_node **stack_a, t_node **stack_b);
+
+void	rotate_to_top(t_node **stack_a, int value);
+int		find_min(t_node *stack);
+int		find_position(t_node *stack, int value);
+int		find_max_position(t_node *stack_b);
+void	sort_chunks(t_node **stack_a, t_node **stack_b);
+void	push_chunks_to_b(t_node **stack_a, t_node **stack_b);
+void	push_back_to_a(t_node **stack_a, t_node **stack_b);
+int		stack_size(t_node *stack);
+int		is_sorted(t_node *stack);
 
 #endif

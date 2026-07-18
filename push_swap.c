@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 00:07:50 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/16 15:30:58 by jwira            ###   ########.fr       */
+/*   Updated: 2026/07/18 00:42:32 by juliannawir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	else if (argc == 2)
+	else
 		parse_input(argc, argv, &stack_a);
 	size = stack_size(stack_a);
 	if (!is_sorted(stack_a))
@@ -55,10 +55,10 @@ int	main(int argc, char **argv)
 			sort_two(&stack_a);
 		else if (size == 3)
 			sort_three(&stack_a);
-		else if (size == 4)
-			sort_four(&stack_a, &stack_b);
 		else if (size <= 5)
-			sort_five(&stack_a, &stack_b);
+			sort_four_five(&stack_a, &stack_b);
+		else
+			sort_chunks(&stack_a, &stack_b);
 	}
 	free_stack(stack_a);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 13:26:05 by jwira             #+#    #+#             */
-/*   Updated: 2026/07/16 14:47:24 by jwira            ###   ########.fr       */
+/*   Updated: 2026/07/17 18:25:11 by juliannawir      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	parse_argument(char *arg, t_node **stack_a)
 	char	**numbers;
 	int		i;
 
-	numbers = ft_split(arg, ' ');
+	numbers = ps_split(arg, ' ');
 	if (!numbers)
 		error_exit(*stack_a);
 	if (!numbers[0])

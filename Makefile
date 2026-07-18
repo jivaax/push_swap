@@ -4,8 +4,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -Ilibft
 
 SRCS = $(addsuffix .c, \
-	push_swap parsing parsing_utils stack_utils rotations swaps \
-	pushes rev_rot sort_small sort_four_five sort_algorithm)
+	push_swap parsing parsing_utils push_split stack_utils rotations swaps \
+	pushes rev_rot sort_small sort_big_utils sort_utils sort_chunks)
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft
