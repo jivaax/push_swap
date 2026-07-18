@@ -3,67 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   push_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juliannawira <juliannawira@student.42.f    +#+  +:+       +#+        */
+/*   By: jwira <jwira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 00:52:19 by juliannawir       #+#    #+#             */
-/*   Updated: 2026/07/18 11:05:48 by juliannawir      ###   ########.fr       */
+/*   Updated: 2026/07/18 14:01:50 by jwira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ps_len(const char *s, int i, char c)
-{
-	int	len;
-	
-	len = 0;
-	while (s[i] && s[i] != c)
-	{
-		len++;
-		i++;
-	}
-	return (len);
-}
-
 static int	ps_count(const char *s, char c)
 {
-	int	w = 0;
-	int	i = 0;
+	int	count;
+	int	i;
 
+	count = 0;
+	i = 0;
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;
 		if (s[i])
-			w++;
+			count++;
 		while (s[i] && s[i] != c)
 			i++;
 	}
-	return (w);
+	return (count);
 }
 
-char	**ps_split(char const *s, char c)
+static char	**ps_free(char **arr, int count)
 {
-	char	**arr;
-	int		i = 0;
-	int		idx = 0;
-	int		len;
+	while (count > 0)
+	{
+		count--;
+		free(arr[count]);
+	}
+	free(arr);
+	return (NULL);
+}
 
-	if (!s || !(arr = malloc((ps_count(s, c) + 1) * sizeof(char *))))
-		return (NULL);
+static int	ps_add_word(char **arr, const char *s, int index, char c)
+{
+	int	len;
+
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	arr[index] = malloc(sizeof(char) * (len + 1));
+	if (!arr[index])
+		return (0);
+	ft_memcpy(arr[index], s, len);
+	arr[index][len] = '\0';
+	return (len);
+}
+
+static char	**ps_fill(char **arr, const char *s, char c)
+{
+	int	i;
+	int	index;
+	int	len;
+
+	i = 0;
+	index = 0;
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;
 		if (!s[i])
-			break;
-		len = ps_len(s, i, c);
-		if (!(arr[idx] = malloc(len + 1)))
-			return (NULL);
-		ft_memcpy(arr[idx], &s[i], len);
-		arr[idx++][len] = '\0';
+			break ;
+		len = ps_add_word(arr, s + i, index, c);
+		if (!len)
+			return (ps_free(arr, index));
 		i += len;
+		index++;
 	}
-	arr[idx] = NULL;
+	arr[index] = NULL;
 	return (arr);
+}
+
+char	**ps_split(char const *s, char c)
+{
+	char	**arr;
+
+	if (!s)
+		return (NULL);
+	arr = malloc(sizeof(char *) * (ps_count(s, c) + 1));
+	if (!arr)
+		return (NULL);
+	return (ps_fill(arr, s, c));
 }
